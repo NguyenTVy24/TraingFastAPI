@@ -30,3 +30,11 @@ def update_project(db: Session, id_project: str, id_user: str, project_update: p
     db_project = Project(id=db_project.id, description=project_update.description, id_user=id_user)
     db.commit()
     return db_project
+
+
+def delete_project(db: Session, id_project: str):
+    db_user = db.query(Project).filter(Project.id == id_project).first()
+    if db_user:
+        db.delete(db_user)
+    db.commit()
+    return db_user

@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 @router.post("/create_textapi/", response_model=textapi.TextApi)
-async def create_student(textapi: textapi.TextApiBase, db: Session = Depends(get_db)):
+async def create_textapi(textapi: textapi.TextApiBase, db: Session = Depends(get_db)):
     std_service = TextApiService(db=db)
     std_response = await std_service.creat_textapi(textapi=textapi)
     return std_response

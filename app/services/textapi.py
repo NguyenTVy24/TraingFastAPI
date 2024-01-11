@@ -1,8 +1,7 @@
 from sqlalchemy.orm import Session
-from fastapi import HTTPException
+from app.schemas.textapi import TextApiBase
+from app.crud.textapi import create_textapi
 
-from ..schemas.textapi import TextApiBase
-from ..crud.textapi import create_textapi
 
 class TextApiService:
     def __init__(self, db: Session):
