@@ -38,3 +38,9 @@ class ProjectService:
         if current_std == "LOI":
             return "User not found"
         return current_std
+
+    async def del_project_id(self, id_project: str):
+        current_std = project.delete_project(db=self.db, id_project=id_project)
+        if not current_std:
+            return "LOI"
+        return current_std

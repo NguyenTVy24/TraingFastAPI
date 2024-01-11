@@ -34,3 +34,9 @@ class UserService:
         if current_std == "LOI":
             return "User not found"
         return current_std
+
+    async def del_user_id(self, id_user: str):
+        current_std = user.delete_user(db=self.db, id_user=id_user)
+        if not current_std:
+            return "LOI"
+        return current_std

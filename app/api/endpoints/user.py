@@ -30,7 +30,7 @@ async def get_all_user(skip: int, limit: int, db: Session = Depends(get_db)):
     return std_response
 
 
-@router.put("/update_user_by_id/{user_id}", response_model=user.User)
+@router.put("/update_user_by_id/{id_user}", response_model=user.User)
 async def update_user_by_id(id_user: str,
                             user_update: user.UserBase,
                             project_update: project.ProjectBase,
@@ -40,3 +40,10 @@ async def update_user_by_id(id_user: str,
                                                        id_user=id_user,
                                                        project_update=project_update)
     return std_response
+
+
+@router.delete("/delete_user_by_id/{id_user}", response_model=user.User)
+async def delete_user(id_user: str, db: Session = Depends(get_db)):
+    user_connect = UserService(db=db)
+    del_user = await user_connect.del_user_id(id_user=id_user)
+    return del_user

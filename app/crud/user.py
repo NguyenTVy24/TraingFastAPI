@@ -41,3 +41,13 @@ def update_user(db: Session, id_user: str, user_update: user.UserBase, project_u
     db.refresh(db_project)
     return db_user, db_project
 
+
+def delete_user(db: Session, id_user: str):
+    db_user = db.query(User).filter(User.id == id_user).first()
+    if db_user:
+        db_project = db.query(Project).filter(Project.id_user == id_user).first()
+        db.delete(db_user)
+        if db_project:
+            db.delete(db_project)
+        db.commit()
+    return db_user
