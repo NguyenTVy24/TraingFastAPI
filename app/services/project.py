@@ -24,3 +24,17 @@ class ProjectService:
         if not crt_user:
             return "LOi"
         return crt_user
+
+    async def get_all_project(self, skip: int, limit: int):
+        crt_user = project.get_all_project(db=self.db, skip=skip, limit=limit)
+        if crt_user == "LOI":
+            return "Project not found"
+        return crt_user
+
+    async def update_project_by_id(self, id_project: str, id_user: str, project_update: ProjectBase):
+        current_std = project.update_project(db=self.db, id_project=id_project,
+                                             id_user=id_user,
+                                             project_update=project_update)
+        if current_std == "LOI":
+            return "User not found"
+        return current_std
