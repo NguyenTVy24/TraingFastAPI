@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.models.textapi import TextAPI
 from app.schemas import textapi
 
+
 def create_textapi(db: Session, textapi: textapi.TextApiBase):
     id_tmp = str(uuid.uuid4())
     db_textapi = TextAPI(id_cou=id_tmp, title=textapi.title)

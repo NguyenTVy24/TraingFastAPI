@@ -3,7 +3,6 @@ from pydantic import BaseModel
 
 class ProjectBase(BaseModel):
     description: str
-    id_user: str
 
 
 class Project(ProjectBase):

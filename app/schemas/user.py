@@ -6,7 +6,7 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
     name: str
     gpa: str
-    gmail: str
+    email: str
 
 
 class User(UserBase):
